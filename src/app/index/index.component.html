@@ -1,17 +1,33 @@
-<div class="container-fluid bg-warning" id="main">
-  <div class="row align-items-center">
-    <div class="col pt-2 m-auto">
-      <center>
-        <img [src]="cheminImage" class="img-fluid rounded">
-      </center>
-    </div>
-    <div class="col">
-      <center>
-        <h2>
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-        </h2>
-      </center>
-    </div>
-  </div>
 
-</div>
+  <div class="row no-gutters" >
+
+    <div class="col-md-6 no-gutters" >
+
+      <div clas="d-flex justify-content-center align-items-center" id="side" [ngStyle]="{background: 'url(assets/img/addict.webp)'} "></div>
+
+    </div>
+    <div class="col-md-6 no-gutters bg-warning">
+
+      <div class="d-flex justify-content-center align-items-center" id="side">
+        <div class="container" id="intro">
+          <h1 class="display-4">
+            <strong>
+              Bienvenu dans la résistance !
+            </strong>
+          </h1>
+          <blockquote class="blockquote">
+            <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+          </blockquote>
+          <br>
+          <p class="text-justify font-weight-light">
+            <em>
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+            </em>
+          </p>
+          <a class="btn btn-danger" routerLink="/signaler" routerLinkActive="active">Signaler</a>
+        </div>
+      </div>
+
+    </div>
+
+  </div>

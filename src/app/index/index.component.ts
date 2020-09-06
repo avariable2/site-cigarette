@@ -8,6 +8,9 @@ import { Component, OnInit } from '@angular/core';
 export class IndexComponent implements OnInit {
   cheminImage = "assets/img/addict.webp";
 
+  att = [
+    {background: 'url(assets/img/addict.webp)'}
+  ];
   constructor() { }
 
   ngOnInit(): void {

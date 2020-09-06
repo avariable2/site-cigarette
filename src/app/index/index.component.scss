@@ -10,9 +10,19 @@ p {
   text-shadow: 1px 1px 2px grey;
 }
 
+#side {
+  min-height: 50vh;
+  width:100%;
+}
 
-#main {
-  width: 100%;
-  padding-top: 5%;
-  padding-bottom: 5%;
+@media screen and (min-width:768px) {
+  #side {
+    min-height: 100vh;
+  }
+}
+
+#intro {
+  color: $text;
+  text-shadow: 1px 1px 2px grey;
+  font-family: "Source Sans Pro", Helvetica, sans-serif
 }
