@@ -10,6 +10,11 @@ import { SignalementComponent } from './signalement/signalement.component';
 import { ConnexionComponent } from './connexion/connexion.component';
 import { InscriptionComponent } from './inscription/inscription.component';
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+//import { HttpClientModule } from '@angular/common/http';
+
+import { AuthService } from './auth.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,9 +27,11 @@ import { InscriptionComponent } from './inscription/inscription.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

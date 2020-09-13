@@ -6,7 +6,7 @@ import { ConnexionComponent } from './connexion/connexion.component';
 import { InscriptionComponent } from './inscription/inscription.component';
 
 const routes: Routes = [
-  { path: 'accueil' , component: IndexComponent },
+  { path: 'accueil' , component: IndexComponent},
   { path: 'signaler' , component: SignalementComponent },
   { path: 'connexion' , component: ConnexionComponent },
   { path: 'inscription' , component: InscriptionComponent },

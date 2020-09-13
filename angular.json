@@ -122,8 +122,13 @@
               "devServerTarget": "site-cigarette:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {}
         }
       }
-    }},
+    }
+  },
   "defaultProject": "site-cigarette"
 }

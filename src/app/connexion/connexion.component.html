@@ -2,19 +2,22 @@
 
   <div class="container bg-light">
 
-    <form class="form-signin">
+    <form [formGroup]="connexionForm" (ngSubmit)="onSubmit()" class="form-signin">
       <img class="mb-4 rounded-circle border bg-dark" src="../../assets/img/cigarette.png" alt="icone du site" width="72" height="72">
 
       <h1 class="h3 mb-3 font-weight-normal">Se connecter</h1>
 
-      <label for="iUsername" >Nom utilisateur</label>
-      <input type="email" id="iUsername" class="form-control" placeholder="kevinDu75" required autofocus>
+      <label for="iUsername" >Adresse mail</label>
+      <input type="email" id="iUsername" class="form-control" placeholder="kevinDu75" formControlName="email">
 
       <label for="inputPassword" >Mot de passe</label>
-      <input type="password" id="inputPassword" class="form-control" placeholder="12345" required>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">Valider</button>
+      <input type="password" id="inputPassword" class="form-control" placeholder="12345" formControlName="mdp">
+      <button class="btn btn-lg btn-primary btn-block" [disabled]="connexionForm.invalid" type="submit">Valider</button>
 
     </form>
+    <p class="text-danger">
+      {{ errorMessage }}
+    </p>
 
   </div>
 
