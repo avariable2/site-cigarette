@@ -4,6 +4,9 @@ MIT
 @angular/core
 MIT
 
+@angular/fire
+MIT
+
 @angular/forms
 MIT
 
@@ -315,6 +318,10 @@ firebase
 Apache-2.0
 
 firebase/app
+
+firebase/database
+
+firebase/firestore
 
 idb
 ISC
