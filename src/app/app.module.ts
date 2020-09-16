@@ -9,11 +9,18 @@ import { FooterComponent } from './footer/footer.component';
 import { SignalementComponent } from './signalement/signalement.component';
 import { ConnexionComponent } from './connexion/connexion.component';
 import { InscriptionComponent } from './inscription/inscription.component';
+import { CompteComponent } from './compte/compte.component';
+
+// Import pour la connction a la BDD firebase
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 //import { HttpClientModule } from '@angular/common/http';
 
 import { AuthService } from './auth.service';
+import { environment } from '../environments/environment';
+
 
 @NgModule({
   declarations: [
@@ -23,13 +30,16 @@ import { AuthService } from './auth.service';
     FooterComponent,
     SignalementComponent,
     ConnexionComponent,
-    InscriptionComponent
+    InscriptionComponent,
+    CompteComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

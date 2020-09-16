@@ -13,25 +13,29 @@
       <ul class="navbar-nav">
 
         <li routerLinkActive="active" class="nav-item">
-          <a class="nav-link" routerLink="/signaler" routerLinkActive="active">Envoyer plaque</a>
+          <a class="nav-link pl-1" routerLink="/signaler" routerLinkActive="active">Envoyer plaque</a>
         </li>
 
         <li routerLinkActive="active" class="nav-item justify-content-end" *ngIf="!isAuth">
-          <a class="nav-link" routerLink="/connexion" routerLinkActive="active">Connexion</a>
+          <a class="nav-link pl-1" routerLink="/connexion" routerLinkActive="active">Connexion</a>
         </li>
 
         <li routerLinkActive="active" class="nav-item" *ngIf="!isAuth">
-          <a class="nav-link" routerLink="/inscription" routerLinkActive="active">Inscription</a>
+          <a class="nav-link pl-1" routerLink="/inscription" routerLinkActive="active">Inscription</a>
         </li>
 
         <li routerLinkActive="active" *ngIf="isAuth" class="nav-item dropdown" >
-          <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a class="nav-link dropdown-toggle pl-1" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <span class="material-icons">
               account_circle
             </span>
+            {{ user.displayName }}
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" (click)="onSignOut()" >
+            <a class="dropdown-item" routerLink="/compte">
+              Voir compte
+            </a>
+            <a class="dropdown-item" (click)="onSignOut()" routerLink="" >
               Deconexion
             </a>
           </div>

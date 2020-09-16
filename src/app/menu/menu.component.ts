@@ -9,7 +9,8 @@ import * as firebase from 'firebase';
 })
 export class MenuComponent implements OnInit {
 
-  isAuth: boolean;
+  public isAuth: boolean;
+  user: any;
 
   constructor(private authService: AuthService) { }
 
@@ -18,6 +19,7 @@ export class MenuComponent implements OnInit {
       (user)=> {
         if(user) {
           this.isAuth = true;
+          this.recupererUser();
         } else {
           this.isAuth = false;
         }
@@ -27,6 +29,10 @@ export class MenuComponent implements OnInit {
 
   onSignOut() {
     this.authService.signOutUser();
+  }
+
+  recupererUser() {
+    this.user = this.authService.donnerUser();
   }
 
 }

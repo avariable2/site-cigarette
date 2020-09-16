@@ -6,6 +6,8 @@ import * as firebase from 'firebase/app';
 @Injectable()
 export class AuthService {
 
+  user: any;
+
   constructor() {  }
 
   creationNouveauUser(email: string, password: string) {
@@ -36,6 +38,14 @@ export class AuthService {
           );
         }
       );
+  }
+
+  donnerUser() {
+    return firebase.auth().currentUser;
+  }
+
+  setImageUser() {
+
   }
 
   signOutUser() {

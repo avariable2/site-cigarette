@@ -1,0 +1,16 @@
+<div class="container center-block">
+  <h1>Votre compte: </h1>
+
+  <h3>Email</h3>
+  <input type="text" name="email" size="50" [(value)]="user.email">
+
+  <h3>Nom d'utilisateur</h3>
+  <input type="text" name="username" size="50" [(value)]="user.displayName">
+
+  <h3>Photo</h3>
+  <input type="text" name="photo" size="50" placeholder="Url de votre image" [(value)]="user.photoURL">
+  <br>
+  <br>
+  <button type="button" class="btn btn-primary" name="button">Changer</button>
+
+</div>
