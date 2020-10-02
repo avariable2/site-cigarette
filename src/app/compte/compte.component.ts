@@ -26,8 +26,20 @@ export class CompteComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
-
-  recupererInfo(){
+  changerUsername(username: string) {
+    if (username == this.user.displayName) { return;}
+    this.user.updateProfile(
+    {
+      displayName: username
+    }
+    ).then(
+      function(){
+        //console.log("update reussi");
+      }
+    ).catch(
+      function(error){
+        //console.log("error");
+      }
+    );
   }
 }

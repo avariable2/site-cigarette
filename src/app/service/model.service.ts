@@ -66,16 +66,6 @@ export class ModelService {
     //console.log("oui"); // Pour tester si la méthode fonctionne
   }
 
-
-
-  private setPoint(pnt) {
-    this.point = pnt;
-  }
-
-  private getPoint() {
-    return this.point;
-  }
-
   // Ajoute dans l'arbre mego un signalement
   ajouterSignalementMego( dateParam, plaqueParam, uidCompteParam ) {
     if (this.getCurrentUser()){

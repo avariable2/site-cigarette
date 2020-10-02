@@ -28,6 +28,7 @@ export class InscriptionComponent implements OnInit {
     this.inscriptionForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       mdp: ['', [Validators.required, Validators.pattern(/[0-9a-zA-Z]{6,}/)]],
+      mdp2: ['', [Validators.required, Validators.pattern(/[0-9a-zA-Z]{6,}/)]],
       username: ['', [Validators.required, Validators.pattern(/^[a-z0-9_-]{3,16}/)]],
 
     });
@@ -37,6 +38,12 @@ export class InscriptionComponent implements OnInit {
     const name = this.inscriptionForm.get('username').value;
     const email = this.inscriptionForm.get('email').value;
     const password = this.inscriptionForm.get('mdp').value;
+    const password2 = this.inscriptionForm.get('mdp2').value;
+
+    if(password != password2 ) {
+      this.errorMessage = "Les mots de passe ne se ressemblent pas.";
+      return;
+    }
 
     this.authService.creationNouveauUser(email, password).then(
       () => {

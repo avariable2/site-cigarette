@@ -23,11 +23,12 @@ export class SignalementComponent implements OnInit {
 
   constructor(private model: ModelService,
      private formBuilder: FormBuilder, public dialog: MatDialog) {
-       this.model.getPointBdd(this.model.getCurrentUser().uid).then(
-         (pnt: number) => {
-           this.points = pnt;
-         }
-       );
+       if (this.model.getCurrentUser() != null) {
+         this.model.getPointBdd(this.model.getCurrentUser().uid).then(
+           (pnt: number) => {
+             this.points = pnt;
+           });
+       }
   }
 
   ngOnInit(): void {
@@ -45,7 +46,7 @@ export class SignalementComponent implements OnInit {
   // Fonction pour signaler et ajouter des points si la personne est connecter
   addSignalement(): void {
     var uid = "null";
-    if (this.model.getCurrentUser()) {
+    if (this.model.getCurrentUser() != null) {
       uid = this.model.getCurrentUser().uid;
     }
     this.model.ajouterSignalementMego(Date.now(),this.formSignalement.get('plaque').value, uid );
