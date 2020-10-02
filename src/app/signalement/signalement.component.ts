@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
+import * as firebase from 'firebase/app';
 import { Observable } from 'rxjs';
 
-class Signalement {
-  constructor(public title) {}
-}
+import { ModelService } from '../service/model.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { DialogSignalementComponent } from '../dialog-signalement/dialog-signalement.component';
+
 
 @Component({
   selector: 'app-signalement',
@@ -15,18 +18,39 @@ export class SignalementComponent implements OnInit {
 
   cheminImage: "assets/img/cigarette.png";
 
-  items: Observable<any[]>;
+  formSignalement: FormGroup;
+  points: number;
 
-  constructor(firestore: AngularFirestore) {
-      this.items = firestore.collection('site-cigarette').valueChanges();
-      console.log(this.items);
-      
+  constructor(private model: ModelService,
+     private formBuilder: FormBuilder, public dialog: MatDialog) {
+       this.model.getPointBdd(this.model.getCurrentUser().uid).then(
+         (pnt: number) => {
+           this.points = pnt;
+         }
+       );
   }
 
   ngOnInit(): void {
+    this.initForm();
   }
 
-  public addSignalement(): void {
+  // Permet d'initialiser le formulaire et d'imposer les regles de saisie des
+  // champs.
+  initForm() {
+    this.formSignalement = this.formBuilder.group({
+      plaque: ['', [Validators.required, Validators.pattern(/[0-9A-Z]{6,9}/)]]
+    });
+  }
+
+  // Fonction pour signaler et ajouter des points si la personne est connecter
+  addSignalement(): void {
+    var uid = "null";
+    if (this.model.getCurrentUser()) {
+      uid = this.model.getCurrentUser().uid;
+    }
+    this.model.ajouterSignalementMego(Date.now(),this.formSignalement.get('plaque').value, uid );
+    this.model.ajouterPointCompte( uid , this.points );
+    this.dialog.open(DialogSignalementComponent);
   }
 
 }

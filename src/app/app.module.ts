@@ -20,6 +20,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AuthService } from './auth.service';
 import { environment } from '../environments/environment';
+import { ModelService } from './service/model.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DialogSignalementComponent } from './dialog-signalement/dialog-signalement.component';
+
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 @NgModule({
@@ -31,7 +36,8 @@ import { environment } from '../environments/environment';
     SignalementComponent,
     ConnexionComponent,
     InscriptionComponent,
-    CompteComponent
+    CompteComponent,
+    DialogSignalementComponent
   ],
   imports: [
     BrowserModule,
@@ -39,9 +45,14 @@ import { environment } from '../environments/environment';
     FormsModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    BrowserAnimationsModule,
+    MatDialogModule
   ],
-  providers: [AuthService],
+  providers: [
+    AuthService,
+    ModelService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

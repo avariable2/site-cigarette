@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
+import { ModelService } from '../service/model.service';
 
 @Component({
   selector: 'app-inscription',
@@ -16,7 +17,8 @@ export class InscriptionComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private authService: AuthService,
-              private router: Router) { }
+              private router: Router,
+              private model: ModelService) { }
 
   ngOnInit() {
     this.initForm();
@@ -39,6 +41,7 @@ export class InscriptionComponent implements OnInit {
     this.authService.creationNouveauUser(email, password).then(
       () => {
         this.setUserName(name);
+        this.model.ajouterCompteDansBdd(this.user.uid);
         this.router.navigate(['/accueil']);
       },
       (error) => {
@@ -52,16 +55,16 @@ export class InscriptionComponent implements OnInit {
     this.user = this.authService.donnerUser();
 
     this.user.updateProfile(
-      {
+    {
       displayName: name
-      }
+    }
     ).then(
       function(){
-        console.log("update reussi");
+        //console.log("update reussi");
       }
     ).catch(
       function(error){
-        console.log("error");
+        //console.log("error");
       }
     );
   }

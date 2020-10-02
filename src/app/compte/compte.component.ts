@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import * as firebase from 'firebase';
-import { MenuComponent } from '../menu/menu.component';
+import { ModelService } from '../service/model.service';
+
 
 @Component({
   selector: 'app-compte',
@@ -11,19 +12,22 @@ import { MenuComponent } from '../menu/menu.component';
 export class CompteComponent implements OnInit {
 
   user: any;
+  points: number;
 
-  constructor(private authService: AuthService, private menu: MenuComponent) {
-    this.recupererInfo();
+  constructor(private authService: AuthService, private model: ModelService) {
+    this.user = this.authService.donnerUser();
+    this.model.getPointBdd(this.user.uid).then(
+      (pnt: number) => {
+        this.points = pnt;
+      }
+    );
   }
 
   ngOnInit(): void {
   }
 
-  recupererInfo(){
-    this.user = this.authService.donnerUser();
-  }
 
-  mettreAjourUser(name,email,photo){
-    
+
+  recupererInfo(){
   }
 }

@@ -21,6 +21,7 @@ export class ConnexionComponent implements OnInit {
     this.initForm();
   }
 
+  // initialiser le formulaire et les regex
   initForm() {
     this.connexionForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
@@ -28,6 +29,7 @@ export class ConnexionComponent implements OnInit {
     });
   }
 
+  // Permet de se connecter 
   onSubmit() {
     const email = this.connexionForm.get('email').value;
     const password = this.connexionForm.get('mdp').value;
